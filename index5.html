@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            --blue: rgb(61, 90, 254);
+            --light-blue: rgb(33, 150, 243);
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+
+            background-color: rgb(10, 10, 10);
+        }
+
+        .link {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: clamp(0.25em, 1vw, 1em) clamp(1em, 4vw, 4em);
+
+            color: white;
+            font-size: clamp(2em, 8vw, 7em);
+            text-decoration: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .link:nth-of-type(3) {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            ;
+        }
+
+        .link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            height: 100%;
+            width: 0;
+
+            background: linear-gradient(to right, transparent, var(--blue) var(--light-blue-percent), var(--light-blue));
+            transition: .6s ease;
+        }
+
+        .link:hover::before {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a href="" class="link">How</a>
+    <a href="" class="link">To</a>
+    <a href="" class="link">Make</a>
+
+    <script>
+        for (const link of document.querySelectorAll('.link')) {
+            link.onmousemove = e => {
+                const decimal = e.clientX / link.offsetWidth;
+
+                const basePercent = 80,
+                    percentRange = 20,
+                    adjustablePercent = percentRange * decimal;
+
+                const lightBluePercent = basePercent + adjustablePercent;
+                link.style.setProperty("--light-blue-percent", `${lightBluePercent}%`)
+            }
+        }
+    </script>
+</body>
+
+</html>

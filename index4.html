@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            --dark: rgb(20, 20, 20);
+            --yellow: rgb(253, 216, 53);
+            --blue: rgb(98, 0, 234);
+
+            --c1: rgb(38, 70, 83);
+            --c2: rgb(42, 157, 143);
+
+            --left-color: var(--c1);
+            --right-color: var(--c2);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(10, 10, 10);
+        }
+
+        .side {
+            height: 100vh;
+            width: 100%;
+
+            display: grid;
+            place-items: center;
+
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .title {
+            color: white;
+            font-size: 6vw;
+            margin: 0 15vw;
+            width: 70vw;
+        }
+
+        .fancy {
+            font-family: "Lobster", cursive;
+            font-size: 1.3em;
+            line-height: 0.8em;
+        }
+
+        #left-side {
+            background-color: var(--blue);
+            z-index: 2;
+        }
+
+        #left-side .fancy {
+            color: var(--yellow)
+        }
+
+        #right-side {
+            background-color: var(--yellow);
+        }
+
+        #right-side .title {
+            color: rgb(10, 10, 10);
+        }
+
+        #right-side .fancy {
+            color: white;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="left-side" class="side">
+        <h2 class="title">
+            Today is going to be
+            <span class="fancy">
+                awesome
+            </span>
+        </h2>
+    </div>
+    <div id="right-side" class="side">
+        <h2 class="title">
+            Today is going to be
+            <span class="fancy">
+                awesome
+            </span>
+        </h2>
+    </div>
+
+    <script>
+        const left = document.getElementById('left-side');
+
+        const handleOnMove = e => {
+            const p = e.clientX / window.innerWidth * 100;
+
+
+            left.style.width = `${p}%`
+        }
+
+        document.onmousemove = e => handleOnMove(e)
+        document.ontouchmove = e => handleOnMove(e.touches[0])
+    </script>
+</body>
+
+</html>
