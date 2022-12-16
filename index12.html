@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(20, 20, 20);
+            
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin-top: 20vh;
+
+            padding: clamp(1rem, 5vw, 6rem);
+        }
+
+        nav>a {
+            position: relative;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: clamp(3rem, 8vw, 10rem);
+            font-weight: 300;
+            text-decoration: none;
+        }
+
+        nav>a:hover {
+            color: white;
+        }
+
+        nav>a>span {
+            position: relative;
+            display: block;
+            border-top: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+            z-index: 2
+        }
+
+        nav>a>span:hover {
+            border-color: white;
+        }
+
+        nav>a>img {
+            position: absolute;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5);
+            width: min(50vw, 800px);
+            transition: transform .25s, opacity .25s;
+            pointer-events: none;
+        }
+
+        nav>a:hover>img {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="nav">
+        <a href="">
+            <span>
+                I Can
+            </span>
+            <img src="https://plus.unsplash.com/premium_photo-1670871853583-55683d2fc711?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
+                alt="">
+        </a>
+        <a href="">
+            <span>
+                Show
+            </span>
+            <img src="https://images.unsplash.com/photo-1671175300616-3f81d3786b60?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                alt="">
+        </a>
+        <a href="">
+            <span>
+                You
+            </span>
+            <img src="https://images.unsplash.com/photo-1671050579276-b1f0dfbefe76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
+                alt="">
+        </a>
+        <a href="">
+            <span>
+                How
+            </span>
+            <img src="https://images.unsplash.com/photo-1671050578787-e271e550ba0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80"
+                alt="">
+        </a>
+        <a href="">
+            <span>
+                To Make
+            </span>
+            <img src="https://images.unsplash.com/photo-1671119904316-3e7b29f954f2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1133&q=80"
+                alt="">
+        </a>
+        <a href="">
+            <span>
+                This
+            </span>
+            <img src="https://images.unsplash.com/photo-1670993746512-02520b236252?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+                alt="">
+        </a>
+        <a href="">
+            <span>
+                in 60
+            </span>
+            <img src="https://images.unsplash.com/photo-1670347487715-37892ee146b4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                alt="">
+        </a>
+        <a href="">
+            <span>
+                Seconds
+            </span>
+            <img src="https://images.unsplash.com/photo-1671095146395-412079c05bf4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                alt="">
+        </a>
+    </nav>
+
+    <script>
+        const nav = document.querySelector('#nav')
+
+        for (const link of nav.getElementsByTagName("a")) {
+            link.onmousemove = e => {
+                const rect = link.getBoundingClientRect(),
+                    img = link.querySelector('img');
+                img.style.left = `${e.clientX - rect.left}px`
+                img.style.top = `${e.clientY - rect.top}px`
+            }
+        }
+
+        window.onmousemove = e => {
+            const percent = e.clientY / window.innerHeight,
+                y = percent * nav.offsetHeight * -1;
+
+            nav.animate({
+                transform: `translateY(${y}px)`
+            }, {
+                fill: 'forwards',
+                duration: 4000
+            })
+        }
+    </script>
+</body>
+
+</html>

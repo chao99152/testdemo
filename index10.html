@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: rgb(20, 20, 20);
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 10px;
+            background-color: rgb(30, 30, 30);
+            height: 250px;
+            width: 400px;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            border-radius: inherit;
+            background: linear-gradient(45deg, transparent 5%, rgb(255, 215, 317) 50%, transparent 99%);
+            inset: 0px;
+            opacity: 0;
+            z-index: 0;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+            transition: opacity 400ms ease;
+        }
+
+        .card-content {
+            position: absolute;
+            background-color: rgb(30, 30, 30);
+            border-radius: inherit;
+            inset: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="card-content"></div>
+
+    </div>
+</body>
+
+</html>
