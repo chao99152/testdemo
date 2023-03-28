@@ -119,7 +119,7 @@
     </div>
 
     <script>
-        const subtitle = document.getElementsByClassName('card-subtitle')[0];
+        const subtitle = document.querySelector('.card-subtitle');
 
         const createWord = (text, index) => {
             const word = document.createElement('span');
@@ -129,9 +129,14 @@
             return word
         }
 
-        const addWord = (text, index) => subtitle.appendChild(createWord(text, index))
-        const createSubtitle = text => text.split(" ").map(addWord)
-        createSubtitle("But in a much more real sense, I have no idea what I'm doing.")
+        // const addWord = (text, index) => subtitle.appendChild(createWord(text, index))
+        // const createSubtitle = text => text.split(" ").map(addWord)
+        // createSubtitle("But in a much more real sense, I have no idea what I'm doing.")
+
+        const animateText = "But in a much more real sense, I have no idea what I'm doing."
+        animateText.split(" ").map((text, index) => {
+            return subtitle.appendChild(createWord(text, index))
+        })
     </script>
 </body>
 

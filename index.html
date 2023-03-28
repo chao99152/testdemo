@@ -96,7 +96,6 @@
             z-index: 1;
         }
     </style>
-
 </head>
 
 <body>
@@ -122,8 +121,6 @@
     </div>
 
     <script>
-
-
         document.querySelector('.cards').onmousemove = e => {
             for (const card of document.querySelectorAll('.card')) {
                 const rect = card.getBoundingClientRect();
@@ -133,7 +130,6 @@
                 card.style.setProperty('--mouse-x', `${x}px`)
                 card.style.setProperty('--mouse-y', `${y}px`)
             }
-
         }
     </script>
 </body>

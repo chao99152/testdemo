@@ -73,6 +73,7 @@
     <script>
         for (const link of document.querySelectorAll('.link')) {
             link.onmousemove = e => {
+                // const decimal = e.offsetX / link.offsetWidth;
                 const decimal = e.clientX / link.offsetWidth;
 
                 const basePercent = 80,
