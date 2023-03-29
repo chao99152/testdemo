@@ -1,6 +1,6 @@
 ## 前端特效動畫練習
 
-使用 html, css, js 練習
+根據教學使用 html, css, js 練習
 
 > 1. <a href="https://chao99152.github.io/testdemo/index.html">DEMO</a>聚光燈<br/>
 > 2. <a href="https://chao99152.github.io/testdemo/index2.html">DEMO</a>文字動畫<br/>
